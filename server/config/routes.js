@@ -4,11 +4,12 @@ var channels = require('../controllers/channels.js')
 var conversations = require('../controllers/conversations.js')
 module.exports = function(app){
 	app.post('/users', users.create);
+	app.get('/users', users.getAll);
 	app.get('/users/:id', users.show);
 	app.delete('/users/:id', users.remove);
 	app.put('/users/:id', users.update);
 
-	app.post('/messages/:id', messages.create);
+	app.post('/users/:id/messages', messages.create);
 	app.delete('/messages/:id', messages.destroy);
 
 	app.post('/users/:id/conversations', conversations.create);

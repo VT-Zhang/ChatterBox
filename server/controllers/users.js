@@ -1,9 +1,31 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User')
+var Message = mongoose.model('Message')
+var Channel = mongoose.model('Channel')
+var Conversation = mongoose.model('Conversation')
 var bcrypt = require('bcrypt');
 
 function UsersController(){
-  this.create = function(req,res){
+    this.getAll = function(req, res){
+        Channel.find({})
+        .populate('_owner')
+        .populate('members')
+        .populate('messages')
+        .exec(function(err, channels){
+            if(err){return res.status(400).json(err)}
+            Conversations.find({})
+            .populate('_user1')
+            .populate('_user2')
+            .populate('messages')
+            .exec(function(err, conversations){
+                if(err){return res.status(400).json(err)}
+                else{
+                    res.json({channels: channels, conversations: conversations})
+                }
+            })
+        })
+    }
+  this.create = function(req, res){
     User.findOne({email: req.body.email}, function(err, user){
         if(err){return res.status(400).json(err)}
         if(!user){

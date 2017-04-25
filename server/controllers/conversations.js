@@ -31,3 +31,4 @@ function ConversationsController(){
         })
     }
 }
+module.exports = new ConversationsController();

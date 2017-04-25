@@ -67,3 +67,4 @@ function ChannelsController(){
         })
     }
 }
+module.exports = new ChannelsController();

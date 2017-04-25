@@ -53,3 +53,4 @@ function MessagesController(){
         })
     }
 }
+module.exports = new MessagesController();
