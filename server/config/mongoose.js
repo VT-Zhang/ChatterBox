@@ -20,7 +20,7 @@ var mongoose = require('mongoose'),
 /*
 *  database information
 */
-    dbURI = 'mongodb://localhost/startupmean';
+    dbURI = 'mongodb://localhost/ChatterBox';
 /*
 * Connect to the database
 */
