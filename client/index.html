@@ -10,9 +10,16 @@
     <script src="assets/app.js" charset="utf-8"></script>
     <script src="assets/factories/welcomeFactory.js" charset="utf-8"></script>
     <script src="assets/controllers/welcomeController.js" charset="utf-8"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var socket = io.connect();
+        })
+    </script>
   </head>
   <body>
-  <a href="#!/">Info</a> | 
+  <a href="#!/">Info</a> |
   <a href="#!/newroute">Another Route</a>
     <div ng-view=""></div>
   </body>
