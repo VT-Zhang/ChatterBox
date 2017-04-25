@@ -1,0 +1,23 @@
+{
+  "name": "full_mean_wall",
+  "version": "1.0.0",
+  "description": "BE SURE TO NPM INSTALL and BOWER INSTALL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "mongoose": "^4.9.6",
+    "mongoose-validators": "^0.1.0",
+    "socket.io": "^1.7.3"
+  }
+}
