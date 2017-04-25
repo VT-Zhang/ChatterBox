@@ -36,7 +36,7 @@ var UserSchema = new mongoose.Schema({
        message: "Password failed validation, you must have at least 1 number, uppercase and special character"
      }
    },
-   birthday: {type: Date, required: "You birthday is required!!", validate: validators.isBefore(["You must be 18 or older!"], [isOldEnough])}
+   birthday: {type: Date, required: "You birthday is required!!", validate: validators.isBefore("You must be 18 or older!", [isOldEnough])}
 }, {timestamps: true})
 
 

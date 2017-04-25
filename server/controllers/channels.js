@@ -7,21 +7,21 @@ var Conversation = mongoose.model('Conversation')
 function ChannelsController(){
     this.create = function(req, res){
         Channel.create(req.body, function(err, channel){
-            if(err){return res.status(400).json(err)}
+            if(err){return res.json({errors: err.errors})}
             else{return res.json({errors: {errors: {message: "Channel created!"}}})}
         })
     }
     this.join = function(req, res){
         User.findOne({_id: req.params.user_id}, function(err, user){
-            if(err){return res.status(400).json(err)}
+            if(err){return res.json({errors: err.errors})}
             Channel.findOne({_id: req.params.id}, function(err, channel){
-                if(err){return res.status(400).json(err)}
+                if(err){return res.json({errors: err.errors})}
                 channel.members.push(user);
                 channel.save(function(err){
-                    if(err){return res.status(400).json(err)}
+                    if(err){return res.json({errors: err.errors})}
                     user.channels.push(channel)
                     user.save(function(err){
-                        if(err){return res.status(400).json(err)}
+                        if(err){return res.json({errors: err.errors})}
                         else{
                             return res.json({errors: {errors: {message: `${user.user_name} joined the channel!`}}})
                         }
@@ -37,7 +37,7 @@ function ChannelsController(){
         }
         else{
             Channel.remove({_id: req.params.id}, function(req, res){
-                if(err){return res.status(400).json(err)}
+                if(err){return res.json({errors: err.errors})}
                 else{
                     return res.json({errors: {errors: {message: "Channel deleted!"}}})
                 }
@@ -46,17 +46,17 @@ function ChannelsController(){
     }
     this.leave = function(req, res){
         User.findOne({_id: req.params.user_id}, function(err, user){
-            if(err){return res.status(400).json(err)}
+            if(err){return res.json({errors: err.errors})}
             Channel.findOne({_id: req.params.id}, function(err, channel){
-                if(err){return res.status(400).json(err)}
+                if(err){return res.json({errors: err.errors})}
                 var idx = channel.members.indexOf(user._id);
                 channel.members.splice(idx, 1);
                 channel.save(function(err){
-                    if(err){return res.status(400).json(err)}
+                    if(err){return res.json({errors: err.errors})}
                     var idx2 = user.channels.indexOf(channel._id)
                     user.channels.splice(idx2, 1)
                     user.save(function(err){
-                        if(err){return res.status(400).json(err)}
+                        if(err){return res.json({errors: err.errors})}
                         else{
                             return res.json({errors: {errors: {message: `${user.user_name} left the channel!`}}})
                         }

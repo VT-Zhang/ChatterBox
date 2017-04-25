@@ -9,14 +9,14 @@ function MessagesController(){
         if(req.body.type == "channel"){
             req.body.type = null;
             Channel.findOne({_id: req.params.id}, function(err, channel){
-                if(err){return res.status(400).json(err)}
+                if(err){return res.json({errors: err.errors})}
                 Message.create(req.body, function(err, message){
                     message._channel = req.params.id;
                     channel.messages.push(message._id);
                     message.save(function(err){
-                        if(err){return res.status(400).json(err)}
+                        if(err){return res.json({errors: err.errors})}
                         channel.save(function(err){
-                            if(err){return res.status(400).json(err)}
+                            if(err){return res.json({errors: err.errors})}
                             else{
                                 return res.json({errors: {errors: {message: "Message added!"}}})
                             }
@@ -28,14 +28,14 @@ function MessagesController(){
         else if(req.body.type == "conversation"){
             req.body.type = null;
             Conversation.findOne({_id: req.params.id}, function(err, conversation){
-                if(err){return res.status(400).json(err)}
+                if(err){return res.json({errors: err.errors})}
                 Message.create(req.body, function(err, message){
                     message._conversation = req.params.id;
                     conversation.messages.push(message._id);
                     message.save(function(err){
-                        if(err){return res.status(400).json(err)}
+                        if(err){return res.json({errors: err.errors})}
                         conversation.save(function(err){
-                            if(err){return res.status(400).json(err)}
+                            if(err){return res.json({errors: err.errors})}
                             else{
                                 return res.json({errors: {errors: {message: "Message added!"}}})
                             }
@@ -48,7 +48,7 @@ function MessagesController(){
 
     this.destroy = function(req, res){
         Message.remove({_id: req.params.id}, function(err, message){
-            if(err){return res.status(400).json(err)}
+            if(err){return res.json({errors: err.errors})}
             else{return res.json({errors: {errors: {message: "Message deleted!"}}})}
         })
     }

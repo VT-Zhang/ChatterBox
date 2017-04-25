@@ -12,13 +12,13 @@ function UsersController(){
         .populate('members')
         .populate('messages')
         .exec(function(err, channels){
-            if(err){return res.status(400).json(err)}
-            Conversations.find({})
+            if(err){return res.json({errors: err.errors})}
+            Conversation.find({})
             .populate('_user1')
             .populate('_user2')
             .populate('messages')
             .exec(function(err, conversations){
-                if(err){return res.status(400).json(err)}
+                if(err){return res.json({errors: err.errors})}
                 else{
                     res.json({channels: channels, conversations: conversations})
                 }
@@ -27,10 +27,12 @@ function UsersController(){
     }
   this.create = function(req, res){
     User.findOne({email: req.body.email}, function(err, user){
-        if(err){return res.status(400).json(err)}
+        if(err){return res.json({errors: err.errors})}
+        console.log(req.body.password);
+        console.log(req.body.password_confirm);
         if(!user){
             if(req.body.password != req.body.password_confirm){
-                return res.json({errors: "Passwords don't match!!"})
+                return res.json({errors: {errors: {message: "Passwords don't match!!"}}})
             }
             else{
                 if(req.body.password){
@@ -38,7 +40,7 @@ function UsersController(){
                 }
             }
             User.create(req.body, function(err, newUser){
-                if(err){return res.status(400).json(err)}
+                if(err){return res.json({errors: err.errors})}
                 else{return res.json(newUser)}
             })
         }
@@ -54,13 +56,13 @@ function UsersController(){
   };
   this.remove = function(req, res){
       User.remove({_id: req.params.id}, function(err, user){
-          if(err){return res.status(400).json(err)}
+          if(err){return res.json({errors: err.errors})}
           else{return res.json({errors: {errors: {message: "Succesfully removed!!"}}})}
       })
   }
   this.update = function(req, res){
       User.findOne({_id: req.params.id}, function(err, user){
-          if(err){return res.status(400).json(err)}
+          if(err){return res.json({errors: err.errors})}
           user.user_name = req.body.user_name;
           if(req.body.password != req.body.password_confirm){
               return res.json({errors: {errors: {message: "Passwords don't match!!"}}})
@@ -71,14 +73,14 @@ function UsersController(){
           user.password = req.body.password;
           user.email = req.body.email;
           user.save(function(err, updatedUser){
-              if(err){return res.status(400).json(err)}
+              if(err){return res.json({errors: err.errors})}
               else{return res.json({errors: {errors: {message: "User updated succesfully!"}}})}
           })
       })
   }
   this.show = function(req, res){
       User.findOne({_id: req.params.id}, function(err, user){
-          if(err){return res.status(400).json(err)}
+          if(err){return res.json({errors: err.errors})}
           else{return res.json(user)}
       })
   }

@@ -2,6 +2,7 @@ var app = angular.module('app', ['ngRoute', 'ngCookies']);
 app.config(function ($routeProvider) {
 	$routeProvider
   .when('/', { templateUrl: 'partials/login.html'})
+  .when('/dashboard', {templateUrl:'partials/dashboard.html'})
   .when('/conversations', {templateUrl:'partials/conversations.html'})
   .when('/channels', {templateUrl:'partials/channels.html'})
   .when('/edit', {templateUrl:'partials/edit.html'})
