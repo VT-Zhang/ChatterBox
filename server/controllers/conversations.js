@@ -6,28 +6,40 @@ var Conversation = mongoose.model('Conversation')
 
 function ConversationsController(){
     this.create = function(req, res){
-        User.find({}, function(err, users){
+        Conversation.findOne({_user1: req.params.id, _user2: req.body._user1}, function(err, conversation1){
             if(err){return res.json({errors: err.errors})}
-            User.findOne({_id: req.params.id}, function(err, user){
-                for(var i = 0; i < users.length; i++){
-                    Conversation.create(req.body, function(err, conversation){
-                        if(err){return res.json({errors: err.errors})}
-                        conversation._user2 = users[i];
-                        conversation.save(function(err){
-                            if(err){return res.json({errors: err.errors})}
-                            users[i].conversations.push(conversation)
-                            users[i].save(function(err){
-                                if(err){return res.json({errors: err.errors})}
-                            })
-                            user.conversations.push(conversation);
-                        })
-                    })
-                }
-                user.save(function(err){
+            if(!conversation1){
+                Conversation.findOne({_user1: req.body._user1, _user2: req.params.id}, function(err, conversation2){
                     if(err){return res.json({errors: err.errors})}
-                    else{return res.json({errors: {errors: {message: "New conversations created!"}}})}
+                    if(!conversation2){
+                        req.body._user2 = req.params.id
+                        Conversation.create(req.body, function(err, newConversation){
+                            User.findOne({_id: req.body._user1}, function(err, user1){
+                                user1.conversations.push(newConversation)
+                                user1.save(function(err){
+                                    if(err){return res.json({errors: err.errors})}
+                                })
+                            })
+                            User.findOne({_id: req.body._user2}, function(err, user2){
+                                user2.conversations.push(newConversation)
+                                user2.save(function(err){
+                                    if(err){return res.json({errors: err.errors})}
+                                })
+                            })
+                            if(err){return res.json({errors: err.errors})}
+                            else{
+                                return res.json(newConversation);
+                            }
+                        })
+                    }
+                    else {
+                        return res.json(conversation2)
+                    }
                 })
-            })
+            }
+            else{
+                return res.json(conversation1);
+            }
         })
     }
 }

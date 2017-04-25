@@ -13,14 +13,13 @@ function UsersController(){
         .populate('messages')
         .exec(function(err, channels){
             if(err){return res.json({errors: err.errors})}
-            Conversation.find({})
-            .populate('_user1')
-            .populate('_user2')
-            .populate('messages')
-            .exec(function(err, conversations){
+            User.find({})
+            .where('_id')
+            .ne(req.params.id)
+            .exec(function(err, users){
                 if(err){return res.json({errors: err.errors})}
                 else{
-                    res.json({channels: channels, conversations: conversations})
+                    res.json({channels: channels, users: users})
                 }
             })
         })
@@ -28,8 +27,6 @@ function UsersController(){
   this.create = function(req, res){
     User.findOne({email: req.body.email}, function(err, user){
         if(err){return res.json({errors: err.errors})}
-        console.log(req.body.password);
-        console.log(req.body.password_confirm);
         if(!user){
             if(req.body.password != req.body.password_confirm){
                 return res.json({errors: {errors: {message: "Passwords don't match!!"}}})

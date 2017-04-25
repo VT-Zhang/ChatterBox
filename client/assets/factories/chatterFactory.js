@@ -3,8 +3,8 @@ app.factory('chatterFactory', ['$http', function($http) {
   function ChatterFactory(){
   	var socket = io.connect();
 
-    this.getAll = function(callback){
-        $http.get('/users')
+    this.getAll = function(id, callback){
+        $http.get('/dash/'+id)
         .then(function(returned_data){
             if(typeof(callback) == "function"){
                 callback(returned_data.data);
@@ -73,7 +73,7 @@ app.factory('chatterFactory', ['$http', function($http) {
         .catch(function(err){console.log(err);})
     }
 
-    this.createConversations = function(id, newConversation, callback){
+    this.createConversation = function(id, newConversation, callback){
         $http.post('/users/'+id+'/conversations', newConversation)
         .then(function(returned_data){
             if(typeof(callback) == "function"){

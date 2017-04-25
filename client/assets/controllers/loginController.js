@@ -31,6 +31,7 @@ app.controller('loginController', ['chatterFactory','$scope','$location','$route
         })
     }
 
+    $scope.newConversation = {};
     $scope.reg = function(){
         chatterFactory.createUser($scope.newUser, function(data){
             if(data.errors){
