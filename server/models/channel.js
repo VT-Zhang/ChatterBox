@@ -7,6 +7,6 @@ var ChannelSchema = new Schema({
     members: [{type: Schema.Types.ObjectId, ref: "User"}],
     topic: {type: String, required: "You must provide a topic for discussion"},
     messages: [{type: Schema.Types.ObjectId, ref: "Message"}],
-})
+}, {timestamps: true})
 
 mongoose.model('Channel', ChannelSchema);

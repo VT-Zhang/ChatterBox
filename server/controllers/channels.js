@@ -12,7 +12,7 @@ function ChannelsController(){
         })
     }
     this.join = function(req, res){
-        User.findOne({_id: req.body._user}, function(err, user){
+        User.findOne({_id: req.params.user_id}, function(err, user){
             if(err){return res.status(400).json(err)}
             Channel.findOne({_id: req.params.id}, function(err, channel){
                 if(err){return res.status(400).json(err)}
@@ -32,7 +32,7 @@ function ChannelsController(){
         })
     }
     this.destroy = function(req, res){
-        if(req.params.user != _owner){
+        if(req.params.user_id != _owner){
             return res.json({errors: {errors: {message: "Insufficient privileges to delete this channel!"}}})
         }
         else{
@@ -45,7 +45,7 @@ function ChannelsController(){
         }
     }
     this.leave = function(req, res){
-        User.findOne({_id: req.params.user}, function(err, user){
+        User.findOne({_id: req.params.user_id}, function(err, user){
             if(err){return res.status(400).json(err)}
             Channel.findOne({_id: req.params.id}, function(err, channel){
                 if(err){return res.status(400).json(err)}

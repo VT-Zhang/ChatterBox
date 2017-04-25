@@ -18,7 +18,7 @@ function MessagesController(){
                         channel.save(function(err){
                             if(err){return res.status(400).json(err)}
                             else{
-                                return res.json({errors: {errors: message: "Message added!"}})
+                                return res.json({errors: {errors: {message: "Message added!"}}})
                             }
                         })
                     })
@@ -37,7 +37,7 @@ function MessagesController(){
                         conversation.save(function(err){
                             if(err){return res.status(400).json(err)}
                             else{
-                                return res.json({errors: {errors: message: "Message added!"}})
+                                return res.json({errors: {errors: {message: "Message added!"}}})
                             }
                         })
                     })
@@ -49,7 +49,7 @@ function MessagesController(){
     this.destroy = function(req, res){
         Message.remove({_id: req.params.id}, function(err, message){
             if(err){return res.status(400).json(err)}
-            else{return res.json({errors: errors: message: "Message deleted!"})}
+            else{return res.json({errors: {errors: {message: "Message deleted!"}}})}
         })
     }
 }

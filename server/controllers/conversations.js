@@ -8,7 +8,7 @@ function ConversationsController(){
     this.create = function(req, res){
         User.find({}, function(err, users){
             if(err){return res.status(400).json(err)}
-            User.findOne({_id: req.params.user}, function(err, user){
+            User.findOne({_id: req.params.id}, function(err, user){
                 for(var i = 0; i < users.length; i++){
                     Conversation.create(req.body, function(err, conversation){
                         if(err){return res.status(400).json(err)}

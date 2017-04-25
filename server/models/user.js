@@ -20,6 +20,8 @@ var UserSchema = new mongoose.Schema({
 	first_name: {type: String, required: "Your first name is required!", minlength: 1},
     last_name: {type: String, required: "Your last name is required!", minlength: 1},
 	user_name: {type: String, required: "You must have a user name!!", minlenght: 3},
+	channels: [{type: Schema.Types.ObjectId, ref: "Channel"}],
+	conversations: [{type: Schema.Types.ObjectId, ref: "Conversation"}],
     email: {type: String, required: "Your email is required!", minlength: 1, unique: true,
             validate: validators.isEmail()
         },

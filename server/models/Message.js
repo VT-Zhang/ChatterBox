@@ -7,6 +7,6 @@ var MessageSchema = new Schema({
     _conversation: {type: Schema.Types.ObjectId, ref: "Conversation"},
     _user: {type: Schema.Types.ObjectId, ref: "User"},
     content: {type: String, required: "You must provide a message"},
-})
+}, {timestamps: true})
 
 mongoose.model('Message', MessageSchema);
