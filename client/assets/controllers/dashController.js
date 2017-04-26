@@ -1,4 +1,4 @@
-app.controller('dashController', ['chatterFactory','$scope','$location','$routeParams','$cookies', function(chatterFactory, $scope, $location, $routeParams, $cookies) {
+app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$location','$routeParams','$cookies', function(chatterFactory, socketFactory, $scope, $location, $routeParams, $cookies) {
 
     $scope.errors = {};
     $scope.channels = {};
@@ -80,4 +80,7 @@ app.controller('dashController', ['chatterFactory','$scope','$location','$routeP
         $location.url('/')
     }
 
+    $scope.testSocket = function(){
+        socketFactory.newMessage();
+    }
 }]);

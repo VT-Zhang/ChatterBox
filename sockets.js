@@ -8,8 +8,9 @@ module.exports = function(server){
     io.sockets.on('connection', function (socket) {
         console.log("Sockets are enabled on this application!");
         console.log(socket.id);
-        socket.on('test', function(data){
-            io.emit('success', {message: "Test is successful!"});
+        socket.on('new_message', function(data){
+            console.log(data.refresh);
+            io.emit('refresh_chat', {refresh: "Refresh chat!"})
         });
     });
 }

@@ -1,11 +1,17 @@
 app.factory('socketFactory', ['$http', function($http) {
 
   function SocketFactory(){
-  	var socket = io.connect();
-    socket.emit('test', {message: "trying"})
-    socket.on('success', function(data){
-        console.log(data.message);
-    })
+      	var socket = io.connect();
+
+        this.newMessage = function(){
+            socket.emit('new_message', {refresh: "Refresh chat!"})
+        }
+        socket.on('refresh_chat', function(data){
+            console.log(data.refresh);
+        })
+
+    }
+
 
   return new SocketFactory();
 }]);
