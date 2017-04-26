@@ -1,4 +1,4 @@
-app.factory('socketFactory', ['$http', function($http) {
+app.factory('socketFactory', ['$http','$rootScope', function($http, $rootScope) {
 
   function SocketFactory(){
       	var socket = io.connect();
@@ -8,6 +8,7 @@ app.factory('socketFactory', ['$http', function($http) {
         }
         socket.on('refresh_chat', function(data){
             console.log(data.refresh);
+            $rootScope.work();
         })
 
     }

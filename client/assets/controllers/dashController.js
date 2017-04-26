@@ -1,4 +1,4 @@
-app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$location','$routeParams','$cookies', function(chatterFactory, socketFactory, $scope, $location, $routeParams, $cookies) {
+app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$rootScope', '$location','$routeParams','$cookies', function(chatterFactory, socketFactory, $scope, $rootScope, $location, $routeParams, $cookies) {
 
     $scope.errors = {};
     $scope.channels = {};
@@ -78,6 +78,10 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$l
         $cookies.remove("user_id")
         $cookies.remove("user_name")
         $location.url('/')
+    }
+
+    $rootScope.work = function(){
+        console.log("Root scope is working!!");
     }
 
     $scope.testSocket = function(){
