@@ -1,7 +1,6 @@
 app.factory('chatterFactory', ['$http', function($http) {
 
   function ChatterFactory(){
-  	var socket = io.connect();
 
     this.getAll = function(id, callback){
         $http.get('/dash/'+id)
