@@ -1,5 +1,5 @@
 <div ng-controller="loginController">
-    <h4 ng-repeat="error in errors" style="color: red;">{{error.message}}</h4>
+    <!-- <h4 ng-repeat="error in errors" style="color: red;">{{error.message}}</h4>
     <h2>Register</h2>
     <form ng-submit="reg()">
         <p>First Name: <input type="text" ng-model="newUser.first_name"></p>
@@ -16,6 +16,38 @@
         <p>Email: <input type="text" ng-model="returningUser.email"></p>
         <p>Password: <input type="text" ng-model="returningUser.password"></p>
         <p><input type="submit" value="Login"></p>
-    </form>
+    </form> -->
+
+    <div class="container align-center">
+        <h1 class="text-center">Chatterbox 1.0</h1>
+    </div>
+    <div class="container">
+        <h4 ng-repeat="error in errors" style="color: red;">{{error.message}}</h4>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-5">
+              <form ng-submit="reg()" class="form-signin">
+                <h2 class="form-signin-heading">Register</h2>
+                <input ng-model="newUser.first_name" type="text" class="form-control" placeholder="First Name" required autofocus>
+                <input ng-model="newUser.last_name" type="text" class="form-control" placeholder="Last Name" required>
+                <input ng-model="newUser.user_name" type="text" class="form-control" placeholder="Username" required>
+                <input ng-model="newUser.email" type="email" class="form-control" placeholder="Email" required>
+                <input ng-model="newUser.password" type="password" class="form-control" placeholder="Password" required>
+                <input ng-model="newUser.password_conform" type="password" class="form-control" placeholder="Confirm PW" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+              </form>
+            </div>
+            <div class="col-md-5">
+              <form ng-submit="login()" class="form-signin">
+                <h2 class="form-signin-heading">Sign In</h2>
+                <input ng-model="returningUser.email" type="email" class="form-control" placeholder="Email address" required autofocus>
+                <input ng-model="returningUser.password" type="password" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+              </form>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
 
 </div>
