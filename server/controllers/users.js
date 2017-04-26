@@ -7,20 +7,27 @@ var bcrypt = require('bcrypt');
 
 function UsersController(){
     this.getAll = function(req, res){
-        Channel.find({})
-        .populate('_owner')
-        .populate('members')
-        .populate('messages')
-        .exec(function(err, channels){
+        User.findOne({_id: req.body.user})
+        .populate('channels')
+        .populate('conversations')
+        .exec(function(err, user){
             if(err){return res.json({errors: err.errors})}
-            User.find({})
-            .where('_id')
-            .ne(req.params.id)
-            .exec(function(err, users){
+            Conversation.find({})
+            .populate('_user1')
+            .populate('_user2')
+            .populate('messages')
+            .exec(function(err, conversations){
                 if(err){return res.json({errors: err.errors})}
-                else{
-                    res.json({channels: channels, users: users})
-                }
+                Channel.find({})
+                .populate('_owner')
+                .populate('members')
+                .populate('messages')
+                .exec(function(err, channels){
+                    if(err){return res.json({errors: err.errors})}
+                    else{
+                        return res.json({user: user, conversations: conversations, channels: channels})
+                    }
+                })
             })
         })
     }
