@@ -3,6 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Simple Start Up MEAN</title>
+    <!-- angular material dependencies -->
+    <link rel="stylesheet" href="angular-material/angular-material.min.css">
+    <script src="angular-material/angular-material.min.js"></script>
+    <script src="angular-animate/angular-animate.min.js"></script>
+    <script src="angular-aria/angular-aria.min.js"></script>
+    <script src="angular-messages/angular-messages.min.js"></script>
+    <!-- angular bootstrap dependencies -->
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+
+    <!-- previous dependencies -->
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="moment/moment.js"></script>
     <script src="angular/angular.js" charset="utf-8"></script>
@@ -21,6 +33,53 @@
         //     var socket = io.connect();
         // })
     </script>
+
+    <style>
+        body{
+            background-image: url("assets/img/blur2.jpg");
+        }
+
+        body {
+          padding-top: 40px;
+          padding-bottom: 40px;
+          background-color: #eee;
+        }
+
+        .form-signin {
+          max-width: 330px;
+          padding: 15px;
+          margin: 0 auto;
+        }
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+          margin-bottom: 10px;
+        }
+        .form-signin .checkbox {
+          font-weight: normal;
+        }
+        .form-signin .form-control {
+          position: relative;
+          height: auto;
+          -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+                  box-sizing: border-box;
+          padding: 10px;
+          font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+          z-index: 2;
+        }
+        .form-signin input[type="email"] {
+          margin-bottom: -1px;
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+          margin-bottom: 10px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+    </style>
   </head>
   <body>
     <div ng-view=""></div>
