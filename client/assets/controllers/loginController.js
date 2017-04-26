@@ -6,12 +6,8 @@ app.controller('loginController', ['chatterFactory','$scope','$location','$route
     $scope.returningUser = {};
     $scope.errors = {};
     var index = function(){
-        if(!$cookies.get("user_id") || !$cookies.get("user_name")){
-            $scope.showDash = false;
-        }
-        else{
-            $scope.showDash = true;
-        }
+        $cookies.remove("user_id")
+        $cookies.remove("user_name")
     }
     index();
 

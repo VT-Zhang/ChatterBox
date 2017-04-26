@@ -13,7 +13,7 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">+ Start A New Channel</a></li>
+                    <li><a href="" ng-click="createChannel()">+ Start A New Channel</a></li>
                     <li><a href="#">Edit Profile</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Logout</a></li>
@@ -28,14 +28,12 @@
                     <span class="badge">[New Messages]</span>
                     Learn Angular
                   </li>
-                  <li class="list-group-item list-group-item-success">
+                  <li class="list-group-item list-group-item-success" ng-repeat="channel in channels" ng-click="loadChannel(channel._id)">
                     <span class="badge">[New Messages]</span>
-                    DC Dojo
+                    {{channel.topic}}
                   </li>
-                  <li class="list-group-item list-group-item-success">
-                    <span class="badge"></span>
-                    VA Meet-ups
-                  </li>
+              </ul>
+              <ul>
                   <li class="list-group-item list-group-item-danger">
                     <span class="badge">[New Messages]</span>
                     Nishant

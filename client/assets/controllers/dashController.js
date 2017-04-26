@@ -39,6 +39,8 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
 
     $scope.newChannel = {};
     $scope.createChannel = function(){
+        $scope.newChannel.topic = "Test12"
+        $scope.newChannel._owner = $cookies.get("user_id")
         chatterFactory.createChannel($scope.newChannel, function(data){
             if(data.errors){
                 $scope.errors = data.errors;
@@ -51,8 +53,20 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     }
 
     $scope.newMessage = {};
+    $scope.createMessage = function(){
+        $scope.newMessage._user = $cookies.get("user_id")
+        chatterFactory.createMessage($cookies.get("currChat"), $scope.newMessage, function(data){
+            if(data.errors){
+                $scope.errors = data.errors
+            }
+            else{
+                socketFactory.newMessage();
+            }
+            $scope.newMessage = {};
+        })
+    }
 
-    $scope.loadConversation = function(id){
+    $rootScope.loadConversation = function(id){
         chatterFactory.loadConversation(id, function(data){
             if(data.errors){
                 $scope.errors = data.errors;
@@ -63,7 +77,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
         })
     }
 
-    $scope.loadChannel = function(id){
+    $rootScope.loadChannel = function(id){
         chatterFactory.loadChannel(id, function(data){
             if(data.errors){
                 $scope.errors = data.errors;
