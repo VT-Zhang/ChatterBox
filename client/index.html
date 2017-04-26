@@ -3,6 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Simple Start Up MEAN</title>
+    <!-- angular material dependencies -->
+    <link rel="stylesheet" href="angular-material/angular-material.min.css">
+    <script src="angular-material/angular-material.min.js"></script>
+    <script src="angular-animate/angular-animate.min.js"></script>
+    <script src="angular-aria/angular-aria.min.js"></script>
+    <script src="angular-messages/angular-messages.min.js"></script>
+    <!-- angular bootstrap dependencies -->
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <script src="bootstrap/dist/js/bootstrap.js"></script>
+    <script src="angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+
+    <!-- previous dependencies -->
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="moment/moment.js"></script>
     <script src="angular/angular.js" charset="utf-8"></script>
@@ -21,6 +33,12 @@
         //     var socket = io.connect();
         // })
     </script>
+
+    <style>
+        body{
+            background-image: url("assets/img/blur2.jpg");
+        }
+    </style>
   </head>
   <body>
     <div ng-view=""></div>
