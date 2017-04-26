@@ -42,5 +42,18 @@ function ConversationsController(){
             }
         })
     }
+
+    this.show = function(req, res){
+        Conversation.findOne({_id: req.params.id})
+        .populate('_user1')
+        .populate('_user2')
+        .populate('messages')
+        .exec(function(err, conversation){
+            if(err){return res.json({errors: err.errors})}
+            else{
+                return res.json({conversation});
+            }
+        })
+    }
 }
 module.exports = new ConversationsController();

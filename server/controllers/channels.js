@@ -66,5 +66,17 @@ function ChannelsController(){
             })
         })
     }
+    this.show = function(req, res){
+        Channel.findOne({_id: req.params.id})
+        .populate('_owner')
+        .populate('members')
+        .populate('messages')
+        .exec(function(err, channel){
+            if(err){return res.json({errors: err.errors})}
+            else{
+                return res.json({channel});
+            }
+        })
+    }
 }
 module.exports = new ChannelsController();

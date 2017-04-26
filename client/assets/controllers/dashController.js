@@ -3,6 +3,7 @@ app.controller('dashController', ['chatterFactory','$scope','$location','$routeP
     $scope.errors = {};
     $scope.channels = {};
     $scope.users = {};
+    $scope.conversations = {};
     var index = function(){
         if(!$cookies.get("user_id") || !$cookies.get("user_name")){
             $scope.showDash = false;
@@ -17,7 +18,8 @@ app.controller('dashController', ['chatterFactory','$scope','$location','$routeP
             }
             else {
                 $scope.channels = data.channels;
-                $scope.users = data.users;
+                $scope.user = data.user;
+                $scope.conversations = data.conversations;
             }
         })
     }
@@ -44,6 +46,12 @@ app.controller('dashController', ['chatterFactory','$scope','$location','$routeP
             }
             index();
         })
+    }
+
+    $scope.newMessage = {};
+
+    $scope.loadConversation = function(id){
+        
     }
 
     $scope.logout = function(){

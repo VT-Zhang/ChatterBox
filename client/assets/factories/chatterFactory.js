@@ -83,8 +83,28 @@ app.factory('chatterFactory', ['$http', function($http) {
         .catch(function(err){console.log(err);})
     }
 
+    this.loadConversation = function(id, callback){
+        $http.get('/conversations/'+id)
+        .then(function(returned_data){
+            if(typeof(callback) == "function"){
+                callback(returned_data.data);
+            }
+        })
+        .catch(function(err){console.log(err);})
+    }
+
     this.createChannel = function(newChannel, callback){
         $http.post('/channels/', newChannel)
+        .then(function(returned_data){
+            if(typeof(callback) == "function"){
+                callback(returned_data.data);
+            }
+        })
+        .catch(function(err){console.log(err);})
+    }
+
+    this.loadChannel = function(id, callback){
+        $http.get('/channels/'+id)
         .then(function(returned_data){
             if(typeof(callback) == "function"){
                 callback(returned_data.data);

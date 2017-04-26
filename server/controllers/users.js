@@ -7,7 +7,7 @@ var bcrypt = require('bcrypt');
 
 function UsersController(){
     this.getAll = function(req, res){
-        User.findOne({_id: req.body.user})
+        User.findOne({_id: req.params.id})
         .populate('channels')
         .populate('conversations')
         .exec(function(err, user){
