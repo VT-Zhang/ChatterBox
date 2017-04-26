@@ -4,6 +4,8 @@ app.controller('dashController', ['chatterFactory','$scope','$location','$routeP
     $scope.channels = {};
     $scope.users = {};
     $scope.conversations = {};
+    $scope.currConversation = {};
+    $scope.currChannel = {};
     var index = function(){
         if(!$cookies.get("user_id") || !$cookies.get("user_name")){
             $scope.showDash = false;
@@ -51,7 +53,25 @@ app.controller('dashController', ['chatterFactory','$scope','$location','$routeP
     $scope.newMessage = {};
 
     $scope.loadConversation = function(id){
-        
+        chatterFactory.loadConversation(id, function(data){
+            if(data.errors){
+                $scope.errors = data.errors;
+            }
+            else{
+                $scope.currConversation = data.conversation;
+            }
+        })
+    }
+
+    $scope.loadChannel = function(id){
+        chatterFactory.loadChannel(id, function(data){
+            if(data.errors){
+                $scope.errors = data.errors;
+            }
+            else{
+                $scope.currChannel = data.channel;
+            }
+        })
     }
 
     $scope.logout = function(){
