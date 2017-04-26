@@ -8,7 +8,7 @@ function ChannelsController(){
     this.create = function(req, res){
         Channel.create(req.body, function(err, channel){
             if(err){return res.json({errors: err.errors})}
-            else{return res.json({errors: {errors: {message: "Channel created!"}}})}
+            else{return res.json({channel: channel})}
         })
     }
     this.join = function(req, res){

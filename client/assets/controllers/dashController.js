@@ -33,6 +33,19 @@ app.controller('dashController', ['chatterFactory','$scope','$location','$routeP
         })
     }
 
+    $scope.newChannel = {};
+    $scope.createChannel = function(){
+        chatterFactory.createChannel($scope.newChannel, function(data){
+            if(data.errors){
+                $scope.errors = data.errors;
+            }
+            else {
+                console.log(data.channel);
+            }
+            index();
+        })
+    }
+
     $scope.logout = function(){
         $cookies.remove("user_id")
         $cookies.remove("user_name")
