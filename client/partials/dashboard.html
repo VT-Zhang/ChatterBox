@@ -1,24 +1,53 @@
 <div ng-controller="dashController">
-    <button type="button" ng-click="logout()">LOGOUT</button>
-
-    <div id="side-nav" style="display: inline;">
-        <p>Topic: <input type="text" ng-model="newChannel.topic"></p>
-        <button type="button" ng-click="createChannel()">New Channel</button>
-            <h2 ng-repeat="channel in channels">{{channel.topic}}</h2>
-            <h2 ng-repeat="user in users" ng-click="createConversation(user._id)">{{user.user_name}}</h2>
+    <div class="container">
+        <div class="row" style="border: 1px solid black; height:50px;">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-9">
+                <h3 class="text-center" style="padding-bottom: 5px;">Chatter Box</h3>
+            </div>
+            <div class="col-md-1">
+                <div class="dropdown">
+                  <button class="btn btn-lg btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"  aria-label="Left Align" aria-haspopup="true" aria-expanded="true">
+                    <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Menu
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">+ Start A New Channel</a></li>
+                    <li><a href="#">Edit Profile</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Logout</a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" id="side-nav" style="border: 1px solid black; height:700px;">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <span class="badge">14</span>
+                    Cras justo odio
+                  </li>
+                </ul>            </div>
+            <div class="col-md-9" id="dialog-board" style="border: 1px solid black; height:700px;">
+                <div class="row text-center" id="system-notice" style="border: 1px solid black; height:50px;">
+                    <h3>Channel: Learn to use Angular</h3>
+                </div>
+                <div class="row" id="message-window" style="border: 1px solid black; height:600px;">
+                    message-window
+                </div>
+                <div class="row" id="input-bar" style="border: 1px solid black; height:50px;">
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-lg btn-default">+</button>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control input-lg" placeholder="enter your message" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-lg btn-primary active">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div id="chat-area" style=" border: 3px solid black; width: 600px; height: 650px;">
-        <div id="system">
-            <p>This is where system announcements will go</p>
-        </div>
-        <div id="chat" style="width: 600px; height: 550px;">
-
-        </div>
-        <div id="input">
-            <p><button type="button">+</button><input type="text" ng-model="newMessage.content"><button type="button" ng-click="createMessage()">Send</button></p>
-        </div>
-    </div>
-
-
 </div>
