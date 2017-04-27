@@ -8,7 +8,7 @@ app.factory('socketFactory', ['$http','$rootScope', function($http, $rootScope) 
         }
 
         socket.on("showNotification", function(data){
-            $rootScope.showNotification(name.name);
+            $rootScope.showNotification(data.name);
         })
 
         this.newMessage = function(id, type){

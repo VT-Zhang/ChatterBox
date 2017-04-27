@@ -3,6 +3,8 @@ var messages = require('./server/controllers/messages.js')
 var channels = require('./server/controllers/channels.js')
 var conversations = require('./server/controllers/conversations.js')
 
+var logged_users = 0;
+
 module.exports = function(server){
     var io = require('socket.io').listen(server);
     io.sockets.on('connection', function (socket) {
