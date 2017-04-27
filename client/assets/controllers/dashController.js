@@ -47,6 +47,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
             else {
                 console.log(data.channel);
             }
+            $scope.newChannel = {};
             index();
         })
     }
