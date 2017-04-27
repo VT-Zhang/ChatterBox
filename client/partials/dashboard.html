@@ -14,8 +14,8 @@
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a data-toggle="modal" data-target="#newChannel" data-whatever="@mdo">+ Start A New Channel</a></li>
-                        <li><a href="#">Edit Profile</a></li>
+                        <li><a data-toggle="modal" data-target="#newChannel">+ Start A New Channel</a></li>
+                        <li><a data-toggle="modal" data-target="#editUser">Edit Profile</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a ng-click="logout()">Logout</a></li>
                       </ul>
@@ -44,6 +44,57 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" ng-click="createChannel()" data-dismiss="modal" >Add Channel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of modal -->
+
+        <!-- modal window for editing current user profile -->
+        <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="editUserLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center" id="editUserLabel">Update User Profile</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="first_name" class="control-label">First Name</label>
+                            <input type="text" class="form-control" id="first_name" value="{{user.first_name}}" ng-model="updatedUser.first_name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="last_name" class="control-label">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" value="{{user.last_name}}" ng-model="updatedUser.last_name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="username" class="control-label">Username</label>
+                            <input type="text" class="form-control" id="username" value="{{user.user_name}}" ng-model="updatedUser.username">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="control-label">Email</label>
+                            <input type="text" class="form-control" id="email" value="{{user.email}}" ng-model="updatedUser.email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="password" class="control-label">Password</label>
+                            <input type="text" class="form-control" id="password" ng-model="updatedUser.password">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="password_confirm" class="control-label">Confirm PW</label>
+                            <input type="text" class="form-control" id="password_confirm" ng-model="updatedUser.password_confirm">
+                        </div>
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="updateUser()" data-dismiss="modal">Update User Profile</button>
               </div>
             </div>
           </div>
