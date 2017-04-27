@@ -162,10 +162,15 @@
                     </div>
                     <div class="panel-footer">
                         <div class="form-inline">
-                            <div class="form-group">
+                            <div class="form-group" ng-show="{{currType}}">
                                 <button type="button" class="btn btn btn-default">+</button>
-                                <input type="text" class="form-control input" placeholder="enter your message" aria-describedby="basic-addon1">
-                                <button type="button" class="btn btn btn-primary active" ng-click="testSocket()">Send</button>
+                                <input type="text" class="form-control input" placeholder="enter your message" aria-describedby="basic-addon1" ng-model="newMessage.content">
+                                <button type="button" class="btn btn btn-primary active" ng-click="createMessage('channel')">Send</button>
+                            </div>
+                            <div class="form-group" ng-show="!{{currType}}">
+                                <button type="button" class="btn btn btn-default">+</button>
+                                <input type="text" class="form-control input" placeholder="enter your message" aria-describedby="basic-addon1" ng-model="newMessage.content">
+                                <button type="button" class="btn btn btn-primary active" ng-click="createMessage('conversation')">Send</button>
                             </div>
                         </div>
                     </div>
