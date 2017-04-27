@@ -134,9 +134,9 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
         $location.url('/')
     }
 
-    $rootScope.showNotification = function($scope.user){
+    $rootScope.showNotification = function(user){
         console.log(name);
-        $scope.sysNotification = $scope.user.user_name;
+        $scope.sysNotification = user;
     }
 
 
