@@ -40,8 +40,12 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     $scope.createConversation = function(id){
         $scope.newConversation._user1 = $cookies.get("user_id")
         chatterFactory.createConversation(id, $scope.newConversation, function(data){
+            console.log(data);
             if(data.errors){
                 $scope.errors = data.errors;
+            }
+            else{
+                $rootScope.loadConversation(data.conversation._id)
             }
         })
     }
@@ -89,11 +93,19 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
         $cookies.put("currType", "conversation")
         $scope.currType = false
         chatterFactory.loadConversation(id, function(data){
+            console.log(data);
+            console.log($scope.currType);
             if(data.errors){
                 $scope.errors = data.errors;
             }
             else{
                 $scope.currConversation = data.conversation;
+                if($scope.currConversation._user1._id == $cookies.get("user_id")){
+                    $scope.chattingWith = $scope.currConversation._user2.user_name;
+                }
+                else{
+                    $scope.chattingWith = $scope.currConversation._user1.user_name;
+                }
                 $scope.messages = data.messages;
             }
         })

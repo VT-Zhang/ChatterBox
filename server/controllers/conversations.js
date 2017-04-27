@@ -28,17 +28,17 @@ function ConversationsController(){
                             })
                             if(err){return res.json({errors: err.errors})}
                             else{
-                                return res.json(newConversation);
+                                return res.json({conversation: newConversation});
                             }
                         })
                     }
                     else {
-                        return res.json(conversation2)
+                        return res.json({conversation: conversation2})
                     }
                 })
             }
             else{
-                return res.json(conversation1);
+                return res.json({conversation: conversation1});
             }
         })
     }
