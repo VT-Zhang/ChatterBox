@@ -59,14 +59,20 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     }
 
     $scope.newMessage = {};
-    $scope.createMessage = function(){
+    $scope.createMessage = function(type){
+        if(type == "conversation"){
+            $scope.newMessage.type = "conversation"
+        }
+        else{
+            $scope.newMessage.type = "channel"
+        }
         $scope.newMessage._user = $cookies.get("user_id")
         chatterFactory.createMessage($cookies.get("currChat"), $scope.newMessage, function(data){
             if(data.errors){
                 $scope.errors = data.errors
             }
             else{
-                socketFactory.newMessage($cookies.get("currChat"));
+                socketFactory.newMessage($cookies.get("currChat"), $scope.newMessage.type);
             }
             $scope.newMessage = {};
         })

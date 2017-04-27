@@ -9,8 +9,8 @@ module.exports = function(server){
         console.log("Sockets are enabled on this application!");
         console.log(socket.id);
         socket.on('new_message', function(data){
-            console.log(data.refresh);
-            io.emit('refresh_chat', {refresh: "Refresh chat!"})
+            console.log(data.type);
+            io.emit('refresh_chat', {type: data.type, id: data.id})
         });
     });
 }
