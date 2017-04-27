@@ -7,6 +7,8 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     $scope.currConversation = {};
     $scope.currChannel = {};
     $scope.messages = {};
+    //true means channel, false means conversation
+    $scope.currType = true;
     var index = function(){
         if(!$cookies.get("user_id") || !$cookies.get("user_name")){
             $scope.showDash = false;
@@ -20,10 +22,12 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
                 $scope.errors = data.errors;
             }
             else {
+                console.log(data.user);
                 $scope.channels = data.channels;
                 $scope.user = data.user;
                 $scope.conversations = data.conversations;
                 $scope.otherUsers = data.otherUsers;
+                console.log($scope.user);
             }
         })
     }
@@ -69,8 +73,11 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     }
 
     $rootScope.loadConversation = function(id){
+        $cookies.remove("currType");
         $cookies.remove("currChat");
         $cookies.put("currChat", id)
+        $cookies.put("currType", "conversation")
+        $scope.currType = false
         chatterFactory.loadConversation(id, function(data){
             if(data.errors){
                 $scope.errors = data.errors;
@@ -83,8 +90,11 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     }
 
     $rootScope.loadChannel = function(id){
+        $cookies.remove("currType");
         $cookies.remove("currChat");
         $cookies.put("currChat", id)
+        $cookies.put("currType", "channel")
+        $scope.currType = true
         chatterFactory.loadChannel(id, function(data){
             if(data.errors){
                 $scope.errors = data.errors;
