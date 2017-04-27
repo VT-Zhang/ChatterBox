@@ -140,6 +140,7 @@
                     <div class="panel-heading text-center">
                         <div ng-show="{{currType}}">
                             Channel Topic: {{currChannel.topic}}
+                            <p style="text-align:center"><span class="system-notice" ng-if="sysNotification != null">{{sysNotification}} logged in!</span></p>
                         </div>
                         <div ng-show="!{{currType}}">
                             Chat with: {{currConversation.user.user_name}}
@@ -147,7 +148,6 @@
                     </div>
                     <div class="panel-body" style="height: 600px; overflow:scroll">
                         <!-- system annoucement new user logged in to the channel -->
-                        <p style="text-align:center"><span class="system-notice">{{sysNotification}} joined the channel @ 11:39pm.</span></p>
 
                         <!-- other users' message on the left side of the board -->
                         <div ng-repeat="message in messages">
