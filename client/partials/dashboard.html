@@ -150,7 +150,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel-body" style="height: 600px; overflow:scroll">
+                    <div class="panel-body" scroll-glue-bottom="glue" style="height: 600px; overflow:scroll">
                         <div ng-repeat="message in messages">
                             <p class="other-username-wrapper" ng-if="message._user._id != user._id">{{message._user.user_name}} @{{message.createdAt | date:'short'}}</p>
                             <p class="other-message-wrapper" ng-if="message._user._id != user._id">{{message.content}}</p>

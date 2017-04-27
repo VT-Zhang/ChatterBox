@@ -20,6 +20,7 @@
     <script type="text/javascript" src="moment/moment.js"></script>
     <script src="angular-route/angular-route.js" charset="utf-8"></script>
     <script src="angular-cookies/angular-cookies.js"></script>
+    <script src="angular-scroll-glue/src/scrollglue.js"></script>
     <script src="assets/app.js" charset="utf-8"></script>
     <script src="assets/factories/chatterFactory.js" charset="utf-8"></script>
     <script src="assets/factories/socketFactory.js" charset="utf-8"></script>
@@ -131,6 +132,13 @@
         .modal-header{
             background-color: #dff0d8;
         }
+        [scroll-glue-top],
+      [scroll-glue-bottom],
+      [scroll-glue]{
+        height: 100px;
+        overflow-y: scroll;
+        border: 1px solid gray;
+      }
     </style>
   </head>
   <body>

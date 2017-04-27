@@ -1,5 +1,5 @@
 app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$rootScope', '$location','$routeParams','$cookies', function(chatterFactory, socketFactory, $scope, $rootScope, $location, $routeParams, $cookies) {
-
+    $scope.glue = true;
     $scope.errors = {};
     $scope.channels = {};
     $scope.users = {};
