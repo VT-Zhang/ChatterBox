@@ -6,6 +6,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     $scope.conversations = {};
     $scope.currConversation = {};
     $scope.currChannel = {};
+    $scope.messages = {};
     var index = function(){
         if(!$cookies.get("user_id") || !$cookies.get("user_name")){
             $scope.showDash = false;
@@ -76,6 +77,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
             }
             else{
                 $scope.currConversation = data.conversation;
+                $scope.messages = data.messages;
             }
         })
     }
@@ -89,6 +91,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
             }
             else{
                 $scope.currChannel = data.channel;
+                $scope.messages = data.messages;
             }
         })
     }

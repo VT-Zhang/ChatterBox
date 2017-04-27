@@ -50,9 +50,14 @@ function ConversationsController(){
         .populate('messages')
         .exec(function(err, conversation){
             if(err){return res.json({errors: err.errors})}
-            else{
-                return res.json({conversation});
-            }
+            Message.find({_conversation: req.params.id})
+            .populate('_user')
+            .exec(function(err, messages){
+                if(err){return res.json({errors: err.errors})}
+                else{
+                    return res.json({conversation: conversation, messages: messages})
+                }
+            })
         })
     }
 }

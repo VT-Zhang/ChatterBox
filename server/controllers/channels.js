@@ -73,9 +73,14 @@ function ChannelsController(){
         .populate('messages')
         .exec(function(err, channel){
             if(err){return res.json({errors: err.errors})}
-            else{
-                return res.json({channel});
-            }
+            Message.find({_channel: req.params.id})
+            .populate('_user')
+            .exec(function(err, messages){
+                if(err){return res.json({errors: err.errors})}
+                else{
+                    return res.json({channel: channel, messages: messages})
+                }
+            })
         })
     }
 }

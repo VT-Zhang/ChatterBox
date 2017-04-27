@@ -63,7 +63,7 @@
                             <span class="badge">[New Messages]</span>
                             Learn Angular
                           </li>
-                          <li class="list-group-item list-group-item-info" ng-repeat="channel in channels">
+                          <li class="list-group-item list-group-item-info" ng-repeat="channel in channels" ng-click="loadChannel(channel._id)">
                             <span class="badge">[New Messages]</span>
                             {{channel.topic}}
                           </li>
@@ -101,6 +101,13 @@
                         <!-- current user's message on the right side of the board -->
                         <p class="current-user-name-wrapper">Nishant @11:52pm</p>
                         <p style="text-align: right"><span class="current-user-message-wrapper">Come to daddy....</span></p>
+
+                        <!-- Testing message display -->
+                        <div ng-repeat="message in messages">
+                            <p class="current-user-name-wrapper">{{message._user.user_name}}</p>
+                            <p style="text-align: right"><span class="current-user-message-wrapper">{{message.content}}</span></p>
+                        </div>
+                    </div>
                     </div>
                     <div class="panel-footer">
                         <div class="form-inline">
