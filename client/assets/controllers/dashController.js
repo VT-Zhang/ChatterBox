@@ -22,6 +22,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
                 $scope.channels = data.channels;
                 $scope.user = data.user;
                 $scope.conversations = data.conversations;
+                $scope.otherUsers = data.otherUsers;
             }
         })
     }
