@@ -135,7 +135,11 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     }
 
     $rootScope.showNotification = function(user){
+<<<<<<< HEAD
         console.log(user);
+=======
+        console.log(name);
+>>>>>>> ffde05225a55a03ba9f04756b1408ebfb01be112
         $scope.sysNotification = user;
     }
 
