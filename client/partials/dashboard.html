@@ -110,11 +110,9 @@
                     </div>
                     <div class="panel-body" style="height: 655px; overflow: scroll;">
                         <ul class="list-group">
-
                             <a class="list-group-item active">
                                 Channels
                             </a>
-
                             <a class="list-group-item list-group-item-info" ng-repeat="channel in channels" ng-click="loadChannel(channel._id)">
                                 <span class="badge">[New Messages]</span>
                                 {{channel.topic}}
@@ -124,10 +122,10 @@
                             <a class="list-group-item active">
                                 Private Chats
                             </a>
-                            <li class="list-group-item list-group-item-danger" ng-repeat="otherUser in otherUsers">
+                            <a class="list-group-item list-group-item-danger" ng-repeat="otherUser in otherUsers">
                                 <span class="badge">[New Messages]</span>
                                 {{otherUser.user_name}}
-                            </li>
+                            </a>
                         </ul>
                     </div>
                 </div>
@@ -137,19 +135,22 @@
             <!-- message board -->
             <div class="col-md-8" id="dialog-board">
                 <div class="panel panel-success">
-                    <div class="panel-heading text-center">
-                        <div ng-show="{{currType}}">
-                            Channel Topic: {{currChannel.topic}}
-                            <p style="text-align:center"><span class="system-notice" ng-if="sysNotification != null">{{sysNotification}} logged in!</span></p>
-                        </div>
-                        <div ng-show="!{{currType}}">
-                            Chat with: {{currConversation.user.user_name}}
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div ng-show="{{currType}}">
+                                    Channel: {{currChannel.topic}}
+                                </div>
+                                <div ng-show="!{{currType}}">
+                                    Chat with: {{currConversation.user.user_name}}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="system-notice" ng-if="sysNotification != null">{{sysNotification}} logged in!</p>
+                            </div>
                         </div>
                     </div>
                     <div class="panel-body" style="height: 600px; overflow:scroll">
-                        <!-- system annoucement new user logged in to the channel -->
-
-                        <!-- other users' message on the left side of the board -->
                         <div ng-repeat="message in messages">
                             <p class="other-username-wrapper" ng-if="message._user._id != user._id">{{message._user.user_name}} @{{message.createdAt | date:'short'}}</p>
                             <p class="other-message-wrapper" ng-if="message._user._id != user._id">{{message.content}}</p>
