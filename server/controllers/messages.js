@@ -11,6 +11,7 @@ function MessagesController(){
             Channel.findOne({_id: req.params.id}, function(err, channel){
                 if(err){return res.json({errors: err.errors})}
                 Message.create(req.body, function(err, message){
+                    if(err){return res.json({errors: err.errors})}
                     message._channel = req.params.id;
                     channel.messages.push(message._id);
                     message.save(function(err){
