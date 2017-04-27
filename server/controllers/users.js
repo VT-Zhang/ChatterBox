@@ -24,9 +24,15 @@ function UsersController(){
                 .populate('messages')
                 .exec(function(err, channels){
                     if(err){return res.json({errors: err.errors})}
-                    else{
-                        return res.json({user: user, conversations: conversations, channels: channels})
-                    }
+                    User.find({})
+                    .where('_id')
+                    .ne(req.params.id)
+                    .exec(function(err, otherU){
+                        if(err){return res.json({errors: err.errors})}
+                        else{
+                            return res.json({user: user, conversations: conversations, channels: channels, otherUsers: otherU})
+                        }
+                    })
                 })
             })
         })
