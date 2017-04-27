@@ -63,14 +63,12 @@
                             <span class="badge">[New Messages]</span>
                             Learn Angular
                           </li>
-                          <li class="list-group-item list-group-item-info">
+                          <li class="list-group-item list-group-item-info" ng-repeat="channel in channels">
                             <span class="badge">[New Messages]</span>
-                            DC Dojo
+                            {{channel.topic}}
                           </li>
-                          <li class="list-group-item list-group-item-info">
-                            <span class="badge"></span>
-                            VA Meet-ups
-                          </li>
+                      </ul>
+                      <ul>
                           <li class="list-group-item list-group-item-danger">
                             <span class="badge">[New Messages]</span>
                             Nishant
