@@ -4,10 +4,12 @@
         <!-- top navbar -->
         <nav class="navbar navbar-default">
             <div class="row">
-                <div class="col-md-10"></div>
+                <div class="col-md-10 text-center" style="padding-left:200px; padding-bottom:10px;">
+                    <h3>Chatter Box 1.0</h3>
+                </div>
                 <div class="col-md-1">
                     <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="margin-top:7px; margin-left:60px;">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="margin-top:15px; margin-left:60px;">
                         <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Menu
                         <span class="caret"></span>
                       </button>
@@ -21,9 +23,9 @@
                 </div>
             </div>
         </nav>
+        <!-- end of navbar -->
 
         <div class="row">
-
             <!-- channel & conversation bar -->
             <div class="col-md-4" id="side-nav">
                 <div class="panel panel-success">
@@ -60,6 +62,7 @@
                     </div>
                 </div>
             </div>
+            <!-- end of channel sidebar-->
 
             <!-- message board -->
             <div class="col-md-8" id="dialog-board">
@@ -68,7 +71,14 @@
                         Channel Topic: Learn Angular
                     </div>
                     <div class="panel-body" style="height: 600px;">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                        <p style="text-align:center"><span class="system-notice">Jason joined the channel @ 11:39pm.</span></p>
+                        <p class="other-username-wrapper">Jason @11:40pm</p>
+                        <p class="other-message-wrapper">Wusssup!</p>
+                        <p style="text-align:center"><span class="system-notice">Jaker joined the channel @ 11:41pm.</span></p>
+                        <p class="other-username-wrapper">Jaker @11:42pm</p>
+                        <p class="other-message-wrapper">Let's get the party started!</p>
+                        <p class="current-user-name-wrapper">Nishant @11:52pm</p>
+                        <p style="text-align: right"><span class="current-user-message-wrapper">Come to daddy....</span></p>
                     </div>
                     <div class="panel-footer">
                         <div class="form-inline">
@@ -80,6 +90,17 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- end of message board -->
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-8">
+                <p>
+                    ©2017 Developed by N. Aggarwal and J. Zhang
+                </p>
             </div>
         </div>
     </div>
