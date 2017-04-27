@@ -69,6 +69,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
         $scope.newMessage._user = $cookies.get("user_id")
         chatterFactory.createMessage($cookies.get("currChat"), $scope.newMessage, function(data){
             if(data.errors){
+                console.log(data.errors);
                 $scope.errors = data.errors
             }
             else{

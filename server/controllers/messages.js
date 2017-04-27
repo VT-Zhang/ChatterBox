@@ -19,7 +19,7 @@ function MessagesController(){
                         channel.save(function(err){
                             if(err){return res.json({errors: err.errors})}
                             else{
-                                return res.json({errors: {errors: {message: "Message added!"}}})
+                                return res.json(message)
                             }
                         })
                     })
