@@ -7,6 +7,8 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     $scope.currConversation = {};
     $scope.currChannel = {};
     $scope.messages = {};
+    $scope.sysNotification = "";
+    $rootScope.user = {};
     //true means channel, false means conversation
     $scope.currType = true;
     var index = function(){
@@ -24,7 +26,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
             else {
                 console.log(data.user);
                 $scope.channels = data.channels;
-                $scope.user = data.user;
+                $rootScope.user = data.user;
                 $scope.conversations = data.conversations;
                 $scope.otherUsers = data.otherUsers;
                 console.log($scope.user);
@@ -118,5 +120,11 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
         $cookies.remove("user_name")
         $location.url('/')
     }
+
+    $rootScope.showNotification = function(name){
+        console.log(name);
+        $scope.sysNotification = name;
+    }
+
 
 }]);

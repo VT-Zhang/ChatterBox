@@ -110,10 +110,6 @@
                     </div>
                     <div class="panel-body" style="height: 655px; overflow: scroll;">
                         <ul class="list-group">
-                          <li class="list-group-item list-group-item-info">
-                            <span class="badge">[New Messages]</span>
-                            Learn Angular
-                          </li>
                           <li class="list-group-item list-group-item-info" ng-repeat="channel in channels" ng-click="loadChannel(channel._id)">
                             <span class="badge">[New Messages]</span>
                             {{channel.topic}}
@@ -143,22 +139,9 @@
                     </div>
                     <div class="panel-body" style="height: 600px; overflow:scroll">
                         <!-- system annoucement new user logged in to the channel -->
-                        <p style="text-align:center"><span class="system-notice">Jason joined the channel @ 11:39pm.</span></p>
+                        <p style="text-align:center"><span class="system-notice">{{sysNotification}} joined the channel @ 11:39pm.</span></p>
 
                         <!-- other users' message on the left side of the board -->
-                        <p class="other-username-wrapper">Jason @11:40pm</p>
-                        <p class="other-message-wrapper">Wusssup!</p>
-
-                        <!-- another example for other user's message -->
-                        <p style="text-align:center"><span class="system-notice">Jaker joined the channel @ 11:41pm.</span></p>
-                        <p class="other-username-wrapper">Jaker @11:42pm</p>
-                        <p class="other-message-wrapper">Let's get the party started!</p>
-
-                        <!-- current user's message on the right side of the board -->
-                        <p class="current-user-name-wrapper">Nishant @11:52pm</p>
-                        <p style="text-align: right"><span class="current-user-message-wrapper">Come to daddy....</span></p>
-
-                        <!-- Testing message display -->
                         <div ng-repeat="message in messages">
                             <p class="other-username-wrapper" ng-if="message._user._id != user._id">{{message._user.user_name}} @{{message.createdAt | date:'short'}}</p>
                             <p class="other-message-wrapper" ng-if="message._user._id != user._id">{{message.content}}</p>
