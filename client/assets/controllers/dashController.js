@@ -39,7 +39,6 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
 
     $scope.newChannel = {};
     $scope.createChannel = function(){
-        $scope.newChannel.topic = "Test12"
         $scope.newChannel._owner = $cookies.get("user_id")
         chatterFactory.createChannel($scope.newChannel, function(data){
             if(data.errors){
@@ -60,13 +59,15 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
                 $scope.errors = data.errors
             }
             else{
-                socketFactory.newMessage();
+                socketFactory.newMessage($cookies.get("currChat"));
             }
             $scope.newMessage = {};
         })
     }
 
     $rootScope.loadConversation = function(id){
+        $cookies.remove("currChat");
+        $cookies.put("currChat", id)
         chatterFactory.loadConversation(id, function(data){
             if(data.errors){
                 $scope.errors = data.errors;
@@ -78,6 +79,8 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
     }
 
     $rootScope.loadChannel = function(id){
+        $cookies.remove("currChat");
+        $cookies.put("currChat", id)
         chatterFactory.loadChannel(id, function(data){
             if(data.errors){
                 $scope.errors = data.errors;
@@ -94,11 +97,4 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
         $location.url('/')
     }
 
-    $rootScope.work = function(){
-        console.log("Root scope is working!!");
-    }
-
-    $scope.testSocket = function(){
-        socketFactory.newMessage();
-    }
 }]);
