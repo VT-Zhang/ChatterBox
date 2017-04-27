@@ -17,7 +17,7 @@
                         <li><a data-toggle="modal" data-target="#newChannel" data-whatever="@mdo">+ Start A New Channel</a></li>
                         <li><a href="#">Edit Profile</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a ng-click="logout()">Logout</a></li>
                       </ul>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="channel-topic" class="control-label">Topic:</label>
+                    <label for="channel-topic" class="control-label">Channel Topic:</label>
                     <input type="text" class="form-control" id="channel-topic" ng-model="newChannel.topic">
                   </div>
                 </form>
