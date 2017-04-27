@@ -13,7 +13,7 @@ module.exports = function(server){
             io.emit('refresh_chat', {type: data.type, id: data.id})
         });
         socket.on("newUser", function(data){
-            io.emit("showNotification", {user: data.user})
+            io.emit("showNotification", {name: data.name})
         });
     });
 }

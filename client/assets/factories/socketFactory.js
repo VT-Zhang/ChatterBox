@@ -4,11 +4,11 @@ app.factory('socketFactory', ['$http','$rootScope', function($http, $rootScope) 
       	var socket = io.connect();
 
         this.signIn = function(name){
-            socket.emit('newUser', {user: name})
+            socket.emit('newUser', {name: name})
         }
 
         socket.on("showNotification", function(data){
-            $rootScope.showNotification(data.user);
+            $rootScope.showNotification(name.name);
         })
 
         this.newMessage = function(id, type){

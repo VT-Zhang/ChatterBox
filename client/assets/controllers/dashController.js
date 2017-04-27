@@ -30,7 +30,7 @@ app.controller('dashController', ['chatterFactory','socketFactory', '$scope','$r
                 $scope.conversations = data.conversations;
                 $scope.otherUsers = data.otherUsers;
                 console.log($scope.user);
-                socketFactory.signIn($scope.user)
+                socketFactory.signIn($scope.user.user_name)
             }
         })
     }
