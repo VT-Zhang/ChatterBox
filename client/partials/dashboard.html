@@ -1,74 +1,85 @@
 <div ng-controller="dashController">
     <div class="container">
-        <div class="row" style="border: 1px solid black; height:50px;">
-            <div class="col-md-1">
-            </div>
-            <div class="col-md-9">
-                <h3 class="text-center" style="padding-bottom: 5px;">Chatter Box</h3>
-            </div>
-            <div class="col-md-1">
-                <div class="dropdown">
-                  <button class="btn btn-lg btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"  aria-label="Left Align" aria-haspopup="true" aria-expanded="true">
-                    <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Menu
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="" ng-click="createChannel()">+ Start A New Channel</a></li>
-                    <li><a href="#">Edit Profile</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Logout</a></li>
-                  </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3" id="side-nav" style="border: 1px solid black; height:700px; overflow: auto;">
-                <ul class="list-group">
-                  <li class="list-group-item list-group-item-success">
-                    <span class="badge">[New Messages]</span>
-                    Learn Angular
-                  </li>
-                  <li class="list-group-item list-group-item-success" ng-repeat="channel in channels" ng-click="loadChannel(channel._id)">
-                    <span class="badge">[New Messages]</span>
-                    {{channel.topic}}
-                  </li>
-              </ul>
-              <ul>
-                  <li class="list-group-item list-group-item-danger">
-                    <span class="badge">[New Messages]</span>
-                    Nishant
-                  </li>
-                  <li class="list-group-item list-group-item-danger">
-                    <span class="badge"></span>
-                    Jason
-                  </li>
-                  <li class="list-group-item list-group-item-danger">
-                    <span class="badge"></span>
-                    Jaker
-                  </li>
-                </ul>
-            </div>
-            <div class="col-md-9" id="dialog-board" style="border: 1px solid black; height:700px;">
-                <div class="row text-center" id="system-notice" style="border: 1px solid black; height:50px;">
-                    <h3>Channel: Learn to use Angular</h3>
-                </div>
-                <div class="row" id="message-window" style="border: 1px solid black; height:600px; overflow: auto;">
-                    message-window
-                </div>
-                <div class="row" id="input-bar" style="border: 1px solid black; height:50px;">
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <button type="button" class="btn btn-lg btn-default">+</button>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control input-lg" placeholder="enter your message" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="col-md-1">
-                            <button type="button" class="btn btn-lg btn-primary active" ng-click="testSocket()">Send</button>
-                        </div>
+
+        <!-- top navbar -->
+        <nav class="navbar navbar-default">
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-1">
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="margin-top:7px; margin-left:60px;">
+                        <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Menu
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">+ Start A New Channel</a></li>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                      </ul>
                     </div>
                 </div>
             </div>
+        </nav>
+
+        <div class="row">
+
+            <!-- channel & conversation bar -->
+            <div class="col-md-4" id="side-nav">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">
+                        5 Users Online
+                    </div>
+                    <div class="panel-body" style="height: 655px; overflow: auto;">
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-info">
+                            <span class="badge">[New Messages]</span>
+                            Learn Angular
+                          </li>
+                          <li class="list-group-item list-group-item-info">
+                            <span class="badge">[New Messages]</span>
+                            DC Dojo
+                          </li>
+                          <li class="list-group-item list-group-item-info">
+                            <span class="badge"></span>
+                            VA Meet-ups
+                          </li>
+                          <li class="list-group-item list-group-item-danger">
+                            <span class="badge">[New Messages]</span>
+                            Nishant
+                          </li>
+                          <li class="list-group-item list-group-item-danger">
+                            <span class="badge"></span>
+                            Jason
+                          </li>
+                          <li class="list-group-item list-group-item-danger">
+                            <span class="badge"></span>
+                            Jaker
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- message board -->
+            <div class="col-md-8" id="dialog-board">
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">
+                        Channel Topic: Learn Angular
+                    </div>
+                    <div class="panel-body" style="height: 600px;">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <button type="button" class="btn btn btn-default">+</button>
+                                <input type="text" class="form-control input" placeholder="enter your message" aria-describedby="basic-addon1">
+                                <button type="button" class="btn btn btn-primary active" ng-click="testSocket()">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
