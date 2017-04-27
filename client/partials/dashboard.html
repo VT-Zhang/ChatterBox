@@ -15,7 +15,7 @@
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li><a data-toggle="modal" data-target="#newChannel">+ Start A New Channel</a></li>
-                        <li><a data-toggle="modal" data-target="#editUser">+ Edit Profile - {{user.first_name}}</a></li>
+                        <!-- <li><a data-toggle="modal" data-target="#editUser">+ Edit Profile - {{user.first_name}}</a></li> -->
                         <li role="separator" class="divider"></li>
                         <li><a ng-click="logout()">- Logout</a></li>
                       </ul>
@@ -103,18 +103,18 @@
 
         <div class="row">
             <!-- channel & conversation bar -->
-            <div class="col-md-4" id="side-nav">
+            <div class="col-md-3" id="side-nav">
                 <div class="panel panel-success">
                     <div class="panel-heading text-center">
                         Hello, {{user.first_name}}
                     </div>
-                    <div class="panel-body" style="height: 655px; overflow: scroll;">
+                    <div class="panel-body" style="height: 680px; overflow: scroll;">
                         <ul class="list-group">
                             <a class="list-group-item active">
                                 Channels
                             </a>
                             <a class="list-group-item list-group-item-info" ng-repeat="channel in channels" ng-click="loadChannel(channel._id)">
-                                <span class="badge">[New Messages]</span>
+                                <span class="badge"></span>
                                 {{channel.topic}}
                             </a>
                         </ul>
@@ -123,7 +123,7 @@
                                 Private Chats
                             </a>
                             <a class="list-group-item list-group-item-danger" ng-repeat="otherUser in otherUsers" ng-click="createConversation(otherUser._id)">
-                                <span class="badge">[New Messages]</span>
+                                <span class="badge"></span>
                                 {{otherUser.user_name}}
                             </a>
                         </ul>
@@ -133,7 +133,7 @@
             <!-- end of channel sidebar-->
 
             <!-- message board -->
-            <div class="col-md-8" id="dialog-board">
+            <div class="col-md-9" id="dialog-board">
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <div class="row">
@@ -145,7 +145,7 @@
                                     [ Chat with: {{chattingWith}} ]
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 text-right">
                                 <p class="system-notice" ng-if="sysNotification != ''">{{sysNotification}} logged in!</p>
                             </div>
                         </div>
