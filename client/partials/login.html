@@ -1,4 +1,9 @@
 <div ng-controller="loginController">
+    <script src="text/javascript">
+        $( document ).ready(function() {
+            onComplete="$('#Register').modal('hide');$('body').removeClass('modal-open');$('.modal-backdrop').remove();"
+        });
+    </script>
     <div class="container align-center">
         <h1 class="text-center">ChatterBox</h1>
     </div>
@@ -13,12 +18,21 @@
                     <div class="panel-body">
                           <form ng-submit="login()" class="form-signin">
                             <input ng-model="returningUser.email" type="email" class="form-control" placeholder="Email address" required autofocus>
-                            <input ng-model="returningUser.password" type="text" class="form-control" placeholder="Password" required>
+                            <input ng-model="returningUser.password" type="password" class="form-control" placeholder="Password" required>
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                           </form>
                     </div>
-                    <div class="panel-footer">
-                        <a href="" data-toggle="modal" data-target="#Register">Not A User Yet?</a>
+                    <div class="panel-footer text-center">
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <a href="" data-toggle="modal" data-target="#Register">Not A User Yet?</a>
+                            </div>
+                            <div class="col-md-5">
+                                <a href="" data-toggle="modal" data-target="#Peek">Take A Peek?</a>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -28,20 +42,21 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 text-center">
                 <p>
-                    ©2017 Developed by N. Aggarwal and J. Zhang
+                    ©2017 Developed by N. Aggarwal & J. Zhang
                 </p>
             </div>
         </div>
     </div>
     <h4 class="text-center" ng-repeat="error in errors" style="color: red;">{{error.message}}</h4>
 
+    <!-- modal window for registration -->
     <div class="modal fade" id="Register" tabindex="-1" role="dialog" aria-labelledby="editUserLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title text-center" id="editUserLabel">Register</h4>
-        </div>
+          </div>
           <div class="modal-body">
             <form>
                 <div class="row">
@@ -67,19 +82,28 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="password" class="control-label">Password</label>
-                        <input type="text" class="form-control" id="password" ng-model="newUser.password">
+                        <input type="password" class="form-control" id="password" ng-model="newUser.password">
                     </div>
                     <div class="col-md-6">
                         <label for="password_confirm" class="control-label">Confirm PW</label>
-                        <input type="text" class="form-control" id="password_confirm" ng-model="newUser.password_confirm">
+                        <input type="password" class="form-control" id="password_confirm" ng-model="newUser.password_confirm">
                     </div>
                 </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" ng-click="reg()" data-dismiss="modal">Register</button>
+            <button type="button" class="btn btn-primary" ng-click="reg()">Register</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal window for Peek -->
+    <div class="modal fade bs-example-modal-lg" id="Peek" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <img src="https://lh3.googleusercontent.com/1mqDdnlzV2m2TDpxxr3Uh9676jzFL1wwVj9L4K5NIdPevGzxfcJLxoCAeu1FK-e8_i4cJ3f7pXBiewwudaVuMjbWp1TlE_HOmY_30oXZtvAI9kPHtcWrAgVBYvMDyf-VTIlK1mM5P-BN3-fqT2Brw5WE76ASiNSj0N88vCLNM81I3fAuBKASumeZHOAnMj98e6TvUDP4laCahs9A-qlOW_eN0eUkDmwRTP6n_VUuEpRx-pF0_5Ldqz8jzrfPR1Tq5c3B-Tb5-m31Dazq6QP6CHYDaaKsawepeodX0RGejoB9-gvLvs0u5AKd07TuAmSXEG49EYKGxiyrAEZ-M0tf_tQat1G04-5mODzwIbK-xUBhXgw2YxcYKKrEvTTWS253Srhh65aEqmfiyynEdEiJxXxHDEVEvmWpA5rQvC82DWzB4vwDkweVU3r3_v5mn3uSBg9GYQQy6b5ZnMiVbth6fDKnILyCFcI0XZLmEwUF7Wl7JTrfLgT4WExvG9Jehb0IoNzU_Uk3USvIE4UR-qndVE_kC4LfCCMcUvAcppmykWbX7N2bgfeeOcG7SwtWS8kfDlTUCuJhQQsrRNMq_Bg10gu6fSzn08E7x1Ww6i8JrdMFEI8M4pAj=w896-h602-no" />
         </div>
       </div>
     </div>
